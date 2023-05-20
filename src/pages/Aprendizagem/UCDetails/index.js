@@ -16,7 +16,7 @@ export default function UcDetails() {
 
     const [uc, setUc] = useState([]);
 
-    const descricao = 'Português Instrumental';
+    const descricao = 'Lógica de programação';
 
     return (
         <>
