@@ -28,7 +28,7 @@ export default function Notas() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const resp = await fetch("http://academico3.rj.senac.br/api/Acompanhamento/filterByBrupoIdByEstudanteId/1/1");
+            const resp = await fetch("http://academico3.rj.senac.br/api/RegistroAvaliacao/TodosRegistrosPeriodoAtivoFilterByEstudanteId/1");
             const data = await resp.json();
             setData(data);
         };
@@ -43,10 +43,10 @@ export default function Notas() {
             <TouchableOpacity onPress={() => toggleItem(item.id)} style={styles.container}>
                 <View style={styles.accordionHeader}>
                     <View style={styles.order}>
-                        <Text style={styles.title}>{item.situacaoAprendizagem.titulo}</Text>
+                        <Text style={styles.title}>{item?.avaliacaoTipo?.descricao}</Text>
                         <Text style={styles.title}>{item.avaliacaoConceito.descricao}</Text>
                     </View>
-                    {isExpanded && <Text style={styles.contentText}>{item.comentarios[0].comentario}</Text>}
+                    {isExpanded && <Text style={styles.contentText}>{item?.comentario}</Text>}
                 </View>
             </TouchableOpacity>
         );
@@ -89,7 +89,8 @@ const styles = StyleSheet.create({
     },
     contentText: {
       fontSize: 16,
-      color: '#000',
+      color: '#fff',
+      fontWeight: 'bold',
       marginLeft: 5
     },
     order: {
